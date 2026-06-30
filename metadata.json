@@ -1,0 +1,6 @@
+{
+  "name": "Steam Tracker Mobile",
+  "description": "Um aplicativo de contagem de horas estilo Steam para celular. (Rastreamento manual devido a limitações de navegador).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
