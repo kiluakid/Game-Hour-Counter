@@ -1,5 +1,6 @@
 {
   "name": "react-example",
+  "homepage": "https://kiluakid.github.io/Game-Hour-Counter/",
   "private": true,
   "version": "0.0.0",
   "type": "module",

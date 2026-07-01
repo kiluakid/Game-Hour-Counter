@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: './',
+    base: '/Game-Hour-Counter/',
     plugins: [react(), tailwindcss()],
     server: {
       port: 3000,
