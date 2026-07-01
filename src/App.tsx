@@ -42,6 +42,7 @@ export default function App() {
   const [now, setNow] = useState(Date.now());
   const [showAddModal, setShowAddModal] = useState(false);
   const [newGameTitle, setNewGameTitle] = useState('');
+  const [newGameHours, setNewGameHours] = useState('');
 
   // Persist state
   useEffect(() => {
@@ -88,15 +89,19 @@ export default function App() {
     e.preventDefault();
     if (!newGameTitle.trim()) return;
     
+    const hours = parseFloat(newGameHours);
+    const ms = isNaN(hours) ? 0 : hours * 1000 * 60 * 60;
+
     const newGame: Game = {
       id: Math.random().toString(36).slice(2, 9),
       title: newGameTitle.trim(),
       coverUrl: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=400',
-      totalPlaytimeMs: 0,
+      totalPlaytimeMs: ms,
     };
     
     setGames(prev => [newGame, ...prev]);
     setNewGameTitle('');
+    setNewGameHours('');
     setShowAddModal(false);
   };
 
@@ -262,8 +267,17 @@ export default function App() {
                   value={newGameTitle}
                   onChange={e => setNewGameTitle(e.target.value)}
                   placeholder="Nome do Jogo (ex: Minecraft)"
-                  className="w-full bg-[#1b2838] text-white border border-[#2a475e] rounded-sm p-3 mb-6 focus:outline-none focus:border-[#66c0f4] transition-colors"
+                  className="w-full bg-[#1b2838] text-white border border-[#2a475e] rounded-sm p-3 mb-4 focus:outline-none focus:border-[#66c0f4] transition-colors"
                   autoFocus
+                />
+                <input 
+                  type="number" 
+                  value={newGameHours}
+                  onChange={e => setNewGameHours(e.target.value)}
+                  placeholder="Horas jogadas (opcional)"
+                  className="w-full bg-[#1b2838] text-white border border-[#2a475e] rounded-sm p-3 mb-6 focus:outline-none focus:border-[#66c0f4] transition-colors"
+                  min="0"
+                  step="0.1"
                 />
                 <div className="flex gap-3 justify-end">
                   <button 
