@@ -3,6 +3,8 @@ import {createRoot} from 'react-dom/client';
 import App from './App';
 import './index.css';
 
+console.log('main.tsx loaded successfully');
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
